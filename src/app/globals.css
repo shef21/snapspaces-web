@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --foreground: #171717;
+  --primary: #171717;
+  --secondary: #fff;
+  --font-geist-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 @theme inline {
@@ -22,5 +26,78 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+}
+
+/* Font configuration */
+.font-league-spartan {
+  font-family: var(--font-league-spartan), system-ui, -apple-system, sans-serif;
+}
+
+/* Text lift effect */
+.text-lift {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.text-lift:hover {
+  transform: translateY(-4px);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Modern button styles */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-8 py-3 border border-[#171717] text-base font-medium rounded-full text-white bg-[#171717] hover:bg-[#333] transition-all duration-200 shadow hover:shadow-md transform hover:-translate-y-1;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-8 py-3 border border-[#171717] text-base font-medium rounded-full text-[#171717] bg-white hover:bg-[#f3f3f3] transition-all duration-200 shadow hover:shadow-md transform hover:-translate-y-1;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply bg-white/10 backdrop-blur-sm;
+}
+
+/* Section spacing */
+.section-spacing {
+  @apply py-20 px-4 sm:px-6 lg:px-8;
+}
+
+/* Grid layouts */
+.feature-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.pricing-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.creators-grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-6;
+}
+
+/* Link styles */
+.link-icon {
+  @apply flex items-center gap-2 hover:underline hover:underline-offset-4;
+}
+
+/* Layout utilities */
+.layout-container {
+  @apply grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20;
+}
+
+.content-container {
+  @apply flex flex-col gap-[32px] items-center sm:items-start;
 }

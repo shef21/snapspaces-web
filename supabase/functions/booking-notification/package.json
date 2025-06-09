@@ -1,0 +1,10 @@
+{
+  "name": "booking-notification",
+  "version": "1.0.0",
+  "description": "Edge Function to send email notifications for new bookings",
+  "main": "index.ts",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "resend": "^2.0.0"
+  }
+} 
