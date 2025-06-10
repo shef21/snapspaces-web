@@ -54,7 +54,7 @@ export default function HeaderClient() {
   return (
     <header className="sticky top-0 z-30 w-full bg-yellow-300 backdrop-blur border-b border-yellow-300 shadow-sm">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 relative">
-        <Link href="/" className="text-3xl sm:text-4xl font-extrabold font-league-spartan tracking-tight text-white text-lift leading-none focus:outline-none focus:ring-2 focus:ring-yellow-400">SnapSpaces</Link>
+        <Link href="/" className="text-3xl sm:text-4xl font-extrabold font-league-spartan tracking-tight text-white text-lift leading-none focus:outline-none focus:ring-2 focus:ring-yellow-400 lift-effect">SnapSpaces</Link>
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-6 items-center text-base font-medium">
           <Link href="/about" className="hover:underline underline-offset-4 text-[#171717] focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">About</Link>
@@ -161,6 +161,14 @@ export default function HeaderClient() {
         }
         .animate-fade-in {
           animation: fade-in 0.2s ease;
+        }
+        .lift-effect {
+          transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), box-shadow 0.18s cubic-bezier(0.4,0,0.2,1);
+          box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+        }
+        .lift-effect:hover, .lift-effect:focus {
+          transform: translateY(-4px) scale(1.04);
+          box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18);
         }
       `}</style>
     </header>
