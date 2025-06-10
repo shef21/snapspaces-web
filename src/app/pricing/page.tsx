@@ -1,64 +1,71 @@
-import Link from "next/link";
+import React from 'react';
+import { Check } from 'lucide-react';
 
-const plans = [
-  {
-    name: "Starter",
-    price: "Free",
-    description: "Perfect for getting started and exploring SnapSpaces.",
-    features: [
-      "Create a profile",
-      "Browse creatives",
-      "Basic messaging",
-      "View portfolios"
-    ],
-    cta: "Get Started",
-    highlight: true
-  }
-];
-
-export default function PricingPage() {
+const PricingPage = () => {
   return (
-    <div className="min-h-screen bg-[#F6F5F3] font-league-spartan flex flex-col items-center">
-      <main className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0">
-        {/* Hero Section */}
-        <section className="px-4 sm:px-8 pt-8 sm:pt-12 pb-6 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#171717] mb-4">Simple, Transparent Pricing</h1>
-          <p className="text-base sm:text-lg md:text-xl text-[#171717]/80 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">Choose the plan that fits your needs. No hidden fees, no surprises—just powerful tools to help you connect, create, and grow on SnapSpaces.</p>
-        </section>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Simple, transparent pricing
+          </h2>
+        </div>
 
-        {/* Pricing Tiers */}
-        <section className="px-4 sm:px-8 py-8 sm:py-12 flex justify-center">
-          {plans.map((plan, idx) => (
-            <div
-              key={plan.name}
-              className={`rounded-2xl shadow-xl p-8 sm:p-12 flex flex-col items-center text-center border-2 border-yellow-300 bg-yellow-50 scale-105 z-10 shadow-2xl max-w-md w-full`}
-              style={{ boxShadow: '0 8px 32px 0 rgba(255, 193, 7, 0.15)' }}
-            >
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#171717] mb-2">{plan.name}</h2>
-              <div className="text-3xl sm:text-4xl font-extrabold text-yellow-400 mb-2">{plan.price}</div>
-              <div className="text-[#171717]/80 mb-4 text-base sm:text-lg">{plan.description}</div>
-              <ul className="text-[#171717]/80 text-left mb-6 space-y-2 w-full">
-                {plan.features.map(f => (
-                  <li key={f} className="flex items-center gap-2 text-base sm:text-lg">
-                    <span className="inline-block w-3 h-3 bg-yellow-300 rounded-full flex-shrink-0"></span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link 
-                href="/join" 
-                className={`mt-auto w-full px-8 py-4 rounded-full font-semibold shadow bg-yellow-300 hover:bg-yellow-400 text-[#171717] border border-yellow-300 transition focus:outline-none focus:ring-2 focus:ring-yellow-400 text-lg`}
-                aria-label={`Select ${plan.name} plan`}
+        <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-1 sm:gap-6 lg:max-w-4xl lg:mx-auto">
+          {/* Premium Plan */}
+          <div className="rounded-lg shadow-lg divide-y divide-gray-200">
+            <div className="p-6">
+              <h2 className="text-2xl font-semibold text-gray-900">Premium</h2>
+              <p className="mt-4 text-gray-500">
+                For professionals who need advanced features
+              </p>
+              <p className="mt-8">
+                <span className="text-4xl font-extrabold text-gray-900">$49</span>
+                <span className="text-base font-medium text-gray-500">/month</span>
+              </p>
+              <a
+                href="#"
+                className="mt-8 block w-full bg-indigo-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-indigo-700"
               >
-                {plan.cta}
-              </Link>
+                Get started
+              </a>
             </div>
-          ))}
-        </section>
-
-        {/* Call to Action */}
-        {/* Removed for single-tier display */}
-      </main>
+            <div className="pt-6 pb-8 px-6">
+              <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
+                What's included
+              </h3>
+              <ul className="mt-6 space-y-4">
+                <li className="flex space-x-3">
+                  <Check className="flex-shrink-0 h-5 w-5 text-green-500" />
+                  <span className="text-sm text-gray-500">
+                    Advanced analytics
+                  </span>
+                </li>
+                <li className="flex space-x-3">
+                  <Check className="flex-shrink-0 h-5 w-5 text-green-500" />
+                  <span className="text-sm text-gray-500">
+                    Priority support
+                  </span>
+                </li>
+                <li className="flex space-x-3">
+                  <Check className="flex-shrink-0 h-5 w-5 text-green-500" />
+                  <span className="text-sm text-gray-500">
+                    Custom integrations
+                  </span>
+                </li>
+                <li className="flex space-x-3">
+                  <Check className="flex-shrink-0 h-5 w-5 text-green-500" />
+                  <span className="text-sm text-gray-500">
+                    Unlimited projects
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-} 
+};
+
+export default PricingPage; 
