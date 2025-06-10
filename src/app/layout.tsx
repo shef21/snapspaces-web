@@ -5,11 +5,15 @@ import "./globals.css";
 import HeaderClient from "../components/HeaderClient";
 import { UserProvider } from '../context/UserContext';
 import Head from 'next/head';
+import React from 'react';
+import { Inter } from 'next/font/google';
 
 const leagueSpartan = League_Spartan({ 
   subsets: ["latin"],
   variable: '--font-league-spartan',
 });
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "SnapSpaces - Your Digital Workspace",
@@ -42,7 +46,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
-      <body className={`${leagueSpartan.variable} font-sans`}>
+      <body className={`${leagueSpartan.variable} font-sans ${inter.className}`}>
+        <header className="bg-yellow-300">
+          {/* Header content goes here */}
+        </header>
         <UserProvider>
           <HeaderClient />
           {children}
