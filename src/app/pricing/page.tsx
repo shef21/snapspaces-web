@@ -7,7 +7,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-[#F6F5F3] font-league-spartan flex flex-col items-center">
       <main className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0">
         {/* Hero Section */}
-        <section className="px-4 sm:px-8 pt-8 sm:pt-12 pb-6 text-center">
+        <section className="px-4 sm:px-8 pt-8 sm:pt-12 pb-6 text-center bg-yellow-300">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#171717] mb-4">Simple, Transparent Pricing</h1>
           <p className="text-base sm:text-lg md:text-xl text-[#171717]/80 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">Choose the plan that fits your needs. No hidden fees, no surprises—just powerful tools to help you connect, create, and grow on SnapSpaces.</p>
         </section>
