@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 const PricingPage = () => {
   return (
@@ -30,12 +31,12 @@ const PricingPage = () => {
                 <span>Community support</span>
               </li>
             </ul>
-            <a
-              href="#"
+            <Link
+              href="/signup"
               className="mt-auto w-full px-8 py-4 rounded-full font-semibold shadow bg-yellow-300 hover:bg-yellow-400 text-[#171717] border border-yellow-300 transition focus:outline-none focus:ring-2 focus:ring-yellow-400 text-lg"
             >
               Get started
-            </a>
+            </Link>
           </div>
         </section>
       </main>
