@@ -54,4 +54,29 @@ export async function uploadProfilePhoto(userId: string, file: File) {
   // Get the public URL
   const { data: publicUrlData } = supabase.storage.from('profile-photos').getPublicUrl(filePath);
   return { url: publicUrlData?.publicUrl || null, error: null };
+}
+
+// Upload multiple portfolio images to Supabase Storage and return an array of public URLs
+export async function uploadPortfolioImages(userId: string, files: FileList | File[]) {
+  const urls: string[] = [];
+  const errors: any[] = [];
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const fileExt = file.name.split('.').pop();
+    const filePath = `portfolio-images/${userId}-${Date.now()}-${i}.${fileExt}`;
+    const { error } = await supabase.storage.from('portfolio-images').upload(filePath, file, {
+      upsert: true,
+      cacheControl: '3600',
+      contentType: file.type,
+    });
+    if (error) {
+      errors.push(error);
+      continue;
+    }
+    const { data: publicUrlData } = supabase.storage.from('portfolio-images').getPublicUrl(filePath);
+    if (publicUrlData?.publicUrl) {
+      urls.push(publicUrlData.publicUrl);
+    }
+  }
+  return { urls, errors };
 } 

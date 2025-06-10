@@ -177,7 +177,7 @@ export default function Home() {
               <h3 className="text-base sm:text-lg font-bold text-[#171717] mb-1 sm:mb-2">Trusted Results</h3>
               <p className="text-[#171717]/80 text-xs sm:text-base font-light">See real reviews and proven portfolios.</p>
             </div>
-          </div>
+        </div>
         </section>
 
         {/* Stats Row */}
