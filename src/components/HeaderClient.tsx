@@ -77,7 +77,10 @@ export default function HeaderClient() {
           )}
           <Link href="/pricing" className="hover:underline underline-offset-4 text-[#171717] focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Pricing</Link>
           {user && profile && profile.is_admin && (
-            <Link href="/admin/ads" className="hover:underline underline-offset-4 text-[#171717] focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Dashboard</Link>
+            <>
+              <Link href="/admin/ads" className="hover:underline underline-offset-4 text-[#171717] focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Dashboard</Link>
+              <Link href="/admin/clients" className="hover:underline underline-offset-4 text-[#171717] focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Clients</Link>
+            </>
           )}
           {user ? (
             <div className="flex items-center gap-3">
@@ -136,7 +139,10 @@ export default function HeaderClient() {
             )}
             <Link href="/pricing" className="px-6 py-3 text-[#171717] hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Pricing</Link>
             {user && profile && profile.is_admin && (
-              <Link href="/admin/ads" className="px-6 py-3 text-[#171717] hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Dashboard</Link>
+              <>
+                <Link href="/admin/ads" className="px-6 py-3 text-[#171717] hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Dashboard</Link>
+                <Link href="/admin/clients" className="px-6 py-3 text-[#171717] hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">Admin Clients</Link>
+              </>
             )}
             {user ? (
               <>

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import TestimonialsSlider from "./TestimonialsSlider";
+import { useEffect, useState } from "react";
+import { getActiveHomepageAd, incrementAdImpression, incrementAdClick } from "@/utils/ads";
 
 const steps = [
   {
@@ -52,6 +54,17 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [homepageAd, setHomepageAd] = useState<any>(null);
+  useEffect(() => {
+    async function fetchAd() {
+      const { ad } = await getActiveHomepageAd();
+      if (ad) {
+        setHomepageAd(ad);
+        await incrementAdImpression(ad.id);
+      }
+    }
+    fetchAd();
+  }, []);
   return (
     <div className="min-h-screen bg-[#F6F5F3] font-league-spartan flex flex-col items-center">
       <main className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl mt-4 sm:mt-10 mb-4 sm:mb-10 overflow-hidden">
@@ -78,15 +91,36 @@ export default function Home() {
 
         {/* Paid Advertising Section */}
         <section className="px-4 sm:px-8 py-6 sm:py-8 flex justify-center">
-          <div className="relative w-full max-w-3xl bg-yellow-50 border-2 border-yellow-300 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-8">
-            <span className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-yellow-300 text-[#171717] text-xs font-bold px-3 py-1 rounded-full shadow">Sponsored</span>
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Ad Logo" className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border-4 border-yellow-200 shadow-md" />
-            <div className="flex-1 flex flex-col items-start">
-              <h3 className="text-lg sm:text-2xl font-bold text-[#171717] mb-2">Promote Your Creative Business on SnapSpaces!</h3>
-              <p className="text-[#171717]/80 mb-3 text-sm sm:text-base">Reach thousands of clients looking for top creative talent. Get featured on our homepage and boost your bookings.</p>
-              <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-yellow-300 hover:bg-yellow-400 text-[#171717] font-semibold shadow border border-yellow-300 transition w-full sm:w-auto">Advertise Now</button>
+          {homepageAd ? (
+            <div className="relative w-full max-w-3xl bg-yellow-50 border-2 border-yellow-300 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-8">
+              <span className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-yellow-300 text-[#171717] text-xs font-bold px-3 py-1 rounded-full shadow">Sponsored</span>
+              {homepageAd.image_url && (
+                <img src={homepageAd.image_url} alt="Ad Logo" className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border-4 border-yellow-200 shadow-md" />
+              )}
+              <div className="flex-1 flex flex-col items-start">
+                <h3 className="text-lg sm:text-2xl font-bold text-[#171717] mb-2">{homepageAd.ad_slots?.name || "Ad"}</h3>
+                <p className="text-[#171717]/80 mb-3 text-sm sm:text-base">{homepageAd.ad_slots?.description || homepageAd.link_url}</p>
+                <a
+                  href={homepageAd.link_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-yellow-300 hover:bg-yellow-400 text-[#171717] font-semibold shadow border border-yellow-300 transition w-full sm:w-auto"
+                  onClick={async () => { await incrementAdClick(homepageAd.id); }}
+                >
+                  Visit Sponsor
+                </a>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="relative w-full max-w-3xl bg-yellow-50 border-2 border-yellow-300 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-8 opacity-60">
+              <span className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-yellow-300 text-[#171717] text-xs font-bold px-3 py-1 rounded-full shadow">Sponsored</span>
+              <div className="flex-1 flex flex-col items-start">
+                <h3 className="text-lg sm:text-2xl font-bold text-[#171717] mb-2">Your Ad Here!</h3>
+                <p className="text-[#171717]/80 mb-3 text-sm sm:text-base">Reach thousands of clients looking for top creative talent. Get featured on our homepage and boost your bookings.</p>
+                <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-yellow-300 hover:bg-yellow-400 text-[#171717] font-semibold shadow border border-yellow-300 transition w-full sm:w-auto">Advertise Now</button>
+              </div>
+            </div>
+          )}
         </section>
 
         {/* Intro & How It Works */}
