@@ -209,18 +209,19 @@ export default function AdminAdsDashboard() {
 
   return (
     <div className="w-full min-h-screen bg-[#F6F5F3] flex justify-center">
-      <div className="w-full max-w-6xl p-8">
-        <h1 className="text-3xl font-extrabold mb-8 text-[#171717]">Paid Ad Space Dashboard</h1>
-        <div className="mb-12 bg-white rounded-2xl shadow-lg border border-yellow-200 p-6 text-[#171717]">
-          <h2 className="text-2xl font-bold mb-4 text-yellow-600">Ad Slots</h2>
-          <form onSubmit={handleSlotFormSubmit} className="flex flex-col md:flex-row gap-4 mb-6 items-end">
+      <div className="w-full max-w-6xl p-4 sm:p-8 flex flex-col gap-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 text-[#171717] tracking-tight text-center drop-shadow-lg">Paid Ad Space Dashboard</h1>
+        {/* Ad Slots Section */}
+        <section className="mb-2 bg-white rounded-3xl shadow-xl border border-yellow-200 p-6 sm:p-10 flex flex-col gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-yellow-600 flex items-center gap-2"><span className="inline-block w-3 h-3 bg-yellow-300 rounded-full"></span> Ad Slots</h2>
+          <form onSubmit={handleSlotFormSubmit} className="flex flex-col md:flex-row gap-4 mb-4 items-end">
             <input
               type="text"
               name="name"
               placeholder="Slot Name"
               value={slotForm.name}
               onChange={handleSlotFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-48 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-48 focus:ring-2 focus:ring-yellow-300 shadow-sm"
               required
             />
             <input
@@ -229,7 +230,7 @@ export default function AdminAdsDashboard() {
               placeholder="Price"
               value={slotForm.price}
               onChange={handleSlotFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-32 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-32 focus:ring-2 focus:ring-yellow-300 shadow-sm"
               required
             />
             <textarea
@@ -237,34 +238,34 @@ export default function AdminAdsDashboard() {
               placeholder="Description"
               value={slotForm.description}
               onChange={handleSlotFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-64 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-64 focus:ring-2 focus:ring-yellow-300 shadow-sm"
             />
-            <button type="submit" className="bg-yellow-400 px-6 py-3 rounded-lg font-bold hover:bg-yellow-500 transition text-[#171717] shadow">
+            <button type="submit" className="bg-yellow-400 px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition text-[#171717] shadow-lg border border-yellow-300">
               {slotFormMode === "add" ? "Add Slot" : "Update Slot"}
             </button>
             {slotFormMode === "edit" && (
-              <button type="button" onClick={() => { setSlotFormMode("add"); setSlotForm({ name: "", description: "", price: 0 }); setEditingSlotId(null); }} className="ml-2 px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#171717] font-semibold">Cancel</button>
+              <button type="button" onClick={() => { setSlotFormMode("add"); setSlotForm({ name: "", description: "", price: 0 }); setEditingSlotId(null); }} className="ml-2 px-4 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-[#171717] font-semibold border border-gray-200 shadow">Cancel</button>
             )}
           </form>
-          <div className="overflow-x-auto rounded-xl border border-yellow-100 bg-yellow-50 text-[#171717]">
-            <table className="min-w-full text-sm rounded-xl">
+          <div className="overflow-x-auto rounded-2xl border border-yellow-100 bg-yellow-50 text-[#171717] shadow-sm">
+            <table className="min-w-full text-sm rounded-2xl">
               <thead>
                 <tr className="bg-yellow-100 text-[#171717]">
-                  <th className="p-3">Name</th>
-                  <th className="p-3">Description</th>
-                  <th className="p-3">Price</th>
-                  <th className="p-3">Active</th>
-                  <th className="p-3">Actions</th>
+                  <th className="p-4 font-semibold">Name</th>
+                  <th className="p-4 font-semibold">Description</th>
+                  <th className="p-4 font-semibold">Price</th>
+                  <th className="p-4 font-semibold">Active</th>
+                  <th className="p-4 font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {adSlots.map(slot => (
-                  <tr key={slot.id} className={slot.is_active ? "" : "bg-gray-100 text-gray-400"}>
-                    <td className="p-3 font-semibold">{slot.name}</td>
-                    <td className="p-3">{slot.description}</td>
-                    <td className="p-3">R{slot.price}</td>
-                    <td className="p-3 text-center">{slot.is_active ? <span className="inline-block px-2 py-1 rounded-full bg-yellow-200 text-yellow-800 text-xs font-bold">Yes</span> : <span className="inline-block px-2 py-1 rounded-full bg-gray-200 text-gray-500 text-xs font-bold">No</span>}</td>
-                    <td className="p-3 flex gap-2">
+                  <tr key={slot.id} className={slot.is_active ? "hover:bg-yellow-100/60 transition" : "bg-gray-100 text-gray-400"}>
+                    <td className="p-4 font-semibold">{slot.name}</td>
+                    <td className="p-4">{slot.description}</td>
+                    <td className="p-4">R{slot.price}</td>
+                    <td className="p-4 text-center">{slot.is_active ? <span className="inline-block px-2 py-1 rounded-full bg-yellow-200 text-yellow-800 text-xs font-bold">Yes</span> : <span className="inline-block px-2 py-1 rounded-full bg-gray-200 text-gray-500 text-xs font-bold">No</span>}</td>
+                    <td className="p-4 flex gap-2">
                       <button onClick={() => handleEditSlot(slot)} className="text-blue-600 hover:underline font-semibold">Edit</button>
                       {slot.is_active && <button onClick={() => handleDeactivateSlot(slot.id!)} className="text-yellow-600 hover:underline font-semibold">Deactivate</button>}
                       <button onClick={() => handleDeleteSlot(slot.id!)} className="text-red-600 hover:underline font-semibold">Delete</button>
@@ -274,15 +275,16 @@ export default function AdminAdsDashboard() {
               </tbody>
             </table>
           </div>
-        </div>
-        <div className="mb-12 bg-white rounded-2xl shadow-lg border border-yellow-200 p-6 text-[#171717]">
-          <h2 className="text-2xl font-bold mb-4 text-yellow-600">Create / Edit Ad</h2>
-          <form onSubmit={handleAdFormSubmit} className="flex flex-col md:flex-row gap-4 mb-6 items-end">
+        </section>
+        {/* Create/Edit Ad Section */}
+        <section className="mb-2 bg-white rounded-3xl shadow-xl border border-yellow-200 p-6 sm:p-10 flex flex-col gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-yellow-600 flex items-center gap-2"><span className="inline-block w-3 h-3 bg-yellow-300 rounded-full"></span> Create / Edit Ad</h2>
+          <form onSubmit={handleAdFormSubmit} className="flex flex-col md:flex-row gap-4 mb-4 items-end">
             <select
               name="slot_id"
               value={adForm.slot_id}
               onChange={handleAdFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-48 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-48 focus:ring-2 focus:ring-yellow-300 shadow-sm"
               required
             >
               <option value="">Select Slot</option>
@@ -296,7 +298,7 @@ export default function AdminAdsDashboard() {
               placeholder="Client User ID"
               value={adForm.client_id}
               onChange={handleAdFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-48 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-48 focus:ring-2 focus:ring-yellow-300 shadow-sm"
               required
             />
             <input
@@ -305,65 +307,66 @@ export default function AdminAdsDashboard() {
               placeholder="Ad Link URL"
               value={adForm.link_url}
               onChange={handleAdFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-64 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-64 focus:ring-2 focus:ring-yellow-300 shadow-sm"
             />
             <input
               type="date"
               name="start_date"
               value={adForm.start_date}
               onChange={handleAdFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-40 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-40 focus:ring-2 focus:ring-yellow-300 shadow-sm"
             />
             <input
               type="date"
               name="end_date"
               value={adForm.end_date}
               onChange={handleAdFormChange}
-              className="border border-yellow-200 p-3 rounded-lg w-40 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-40 focus:ring-2 focus:ring-yellow-300 shadow-sm"
             />
             <input
               type="file"
               accept="image/*"
               onChange={handleAdImageChange}
-              className="border border-yellow-200 p-3 rounded-lg w-64 focus:ring-2 focus:ring-yellow-300"
+              className="border border-yellow-200 p-3 rounded-xl w-64 focus:ring-2 focus:ring-yellow-300 shadow-sm"
             />
-            <button type="submit" className="bg-yellow-400 px-6 py-3 rounded-lg font-bold hover:bg-yellow-500 transition text-[#171717] shadow">
+            <button type="submit" className="bg-yellow-400 px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition text-[#171717] shadow-lg border border-yellow-300">
               {adFormMode === "add" ? "Create Ad" : "Update Ad"}
             </button>
             {adFormMode === "edit" && (
-              <button type="button" onClick={() => { setAdFormMode("add"); setAdForm({ slot_id: "", client_id: "", link_url: "", start_date: "", end_date: "" }); setAdImageFile(null); setEditingAdId(null); }} className="ml-2 px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#171717] font-semibold">Cancel</button>
+              <button type="button" onClick={() => { setAdFormMode("add"); setAdForm({ slot_id: "", client_id: "", link_url: "", start_date: "", end_date: "" }); setAdImageFile(null); setEditingAdId(null); }} className="ml-2 px-4 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-[#171717] font-semibold border border-gray-200 shadow">Cancel</button>
             )}
           </form>
-        </div>
-        <div className="bg-white rounded-2xl shadow-lg border border-yellow-200 p-6 text-[#171717]">
-          <h2 className="text-2xl font-bold mb-4 text-yellow-600">Ads</h2>
-          <div className="overflow-x-auto rounded-xl border border-yellow-100 bg-yellow-50 text-[#171717]">
-            <table className="min-w-full text-sm rounded-xl">
+        </section>
+        {/* Ads Table Section */}
+        <section className="bg-white rounded-3xl shadow-xl border border-yellow-200 p-6 sm:p-10 flex flex-col gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-yellow-600 flex items-center gap-2"><span className="inline-block w-3 h-3 bg-yellow-300 rounded-full"></span> Ads</h2>
+          <div className="overflow-x-auto rounded-2xl border border-yellow-100 bg-yellow-50 text-[#171717] shadow-sm">
+            <table className="min-w-full text-sm rounded-2xl">
               <thead>
                 <tr className="bg-yellow-100 text-[#171717]">
-                  <th className="p-3">Image</th>
-                  <th className="p-3">Link</th>
-                  <th className="p-3">Slot</th>
-                  <th className="p-3">Client</th>
-                  <th className="p-3">Status</th>
-                  <th className="p-3">Dates</th>
-                  <th className="p-3">Impressions</th>
-                  <th className="p-3">Clicks</th>
-                  <th className="p-3">Actions</th>
+                  <th className="p-4 font-semibold">Image</th>
+                  <th className="p-4 font-semibold">Link</th>
+                  <th className="p-4 font-semibold">Slot</th>
+                  <th className="p-4 font-semibold">Client</th>
+                  <th className="p-4 font-semibold">Status</th>
+                  <th className="p-4 font-semibold">Dates</th>
+                  <th className="p-4 font-semibold">Impressions</th>
+                  <th className="p-4 font-semibold">Clicks</th>
+                  <th className="p-4 font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {ads.map(ad => (
-                  <tr key={ad.id} className="hover:bg-yellow-100/60 transition">
-                    <td className="p-3">{ad.image_url ? <img src={ad.image_url} alt="Ad" className="w-24 h-12 object-cover rounded-lg border border-yellow-200 shadow" /> : "-"}</td>
-                    <td className="p-3">{ad.link_url ? <a href={ad.link_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">{ad.link_url}</a> : "-"}</td>
-                    <td className="p-3">{ad.ad_slots?.name || "-"}</td>
-                    <td className="p-3">{ad.profiles?.name || ad.profiles?.email || "-"}</td>
-                    <td className="p-3">{ad.status}</td>
-                    <td className="p-3">{ad.start_date} - {ad.end_date}</td>
-                    <td className="p-3 text-center">{getAnalyticsForAd(ad.id!).impressions}</td>
-                    <td className="p-3 text-center">{getAnalyticsForAd(ad.id!).clicks}</td>
-                    <td className="p-3 flex gap-2">
+                  <tr key={ad.id} className="hover:bg-yellow-100/60 transition rounded-xl">
+                    <td className="p-4">{ad.image_url ? <img src={ad.image_url} alt="Ad" className="w-24 h-12 object-cover rounded-xl border border-yellow-200 shadow" /> : "-"}</td>
+                    <td className="p-4">{ad.link_url ? <a href={ad.link_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">{ad.link_url}</a> : "-"}</td>
+                    <td className="p-4">{ad.ad_slots?.name || "-"}</td>
+                    <td className="p-4">{ad.profiles?.name || ad.profiles?.email || "-"}</td>
+                    <td className="p-4">{ad.status}</td>
+                    <td className="p-4">{ad.start_date} - {ad.end_date}</td>
+                    <td className="p-4 text-center">{getAnalyticsForAd(ad.id!).impressions}</td>
+                    <td className="p-4 text-center">{getAnalyticsForAd(ad.id!).clicks}</td>
+                    <td className="p-4 flex gap-2">
                       <button onClick={() => handleEditAd(ad)} className="text-blue-600 hover:underline font-semibold">Edit</button>
                       {ad.status === "pending" && <button onClick={() => handleApproveAd(ad.id!)} className="text-green-600 hover:underline font-semibold">Approve</button>}
                       {ad.status === "pending" && <button onClick={() => handleRejectAd(ad.id!)} className="text-yellow-600 hover:underline font-semibold">Reject</button>}
@@ -374,7 +377,7 @@ export default function AdminAdsDashboard() {
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
         {refreshing && <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-40 flex items-center justify-center z-50"><div className="p-6 bg-white rounded shadow text-lg">Refreshing...</div></div>}
       </div>
     </div>
