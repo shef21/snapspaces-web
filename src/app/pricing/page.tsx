@@ -32,7 +32,7 @@ const PricingPage = () => {
               </li>
             </ul>
             <Link
-              href="/signup"
+              href="/join"
               className="mt-auto w-full px-8 py-4 rounded-full font-semibold shadow bg-yellow-300 hover:bg-yellow-400 text-[#171717] border border-yellow-300 transition focus:outline-none focus:ring-2 focus:ring-yellow-400 text-lg"
             >
               Get started
