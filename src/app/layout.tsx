@@ -47,8 +47,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <body className={`${leagueSpartan.variable} font-sans ${inter.className}`}>
-        <header className="bg-yellow-300">
-          {/* Header content goes here */}
+        <header className="bg-yellow-300 p-4">
+          <h1 className="text-2xl font-bold text-[#171717]">SnapSpaces</h1>
         </header>
         <UserProvider>
           <HeaderClient />
