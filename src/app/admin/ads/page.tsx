@@ -208,7 +208,7 @@ export default function AdminAdsDashboard() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
+    <div className="max-w-6xl mx-auto p-8 bg-[#F6F5F3] min-h-screen">
       <h1 className="text-3xl font-extrabold mb-8 text-[#171717]">Paid Ad Space Dashboard</h1>
       <div className="mb-12 bg-white rounded-2xl shadow-lg border border-yellow-200 p-6">
         <h2 className="text-2xl font-bold mb-4 text-yellow-600">Ad Slots</h2>
