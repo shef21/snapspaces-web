@@ -37,7 +37,7 @@ export default function SignInPage() {
       <main className="w-full max-w-md bg-white rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0">
         {/* Hero/Intro */}
         <section className="px-8 pt-10 pb-6 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#171717] mb-2">Sign in to SnapSpaces</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#171717] mb-2">Sign in to Folioo</h1>
           <p className="text-lg text-[#171717]/80 mb-6 font-light">Welcome back! Please enter your details to continue.</p>
         </section>
 
@@ -99,7 +99,7 @@ export default function SignInPage() {
         {/* Sign Up Link */}
         <div className="px-8 pb-8 text-center text-sm text-[#171717]/80">
           Don&apos;t have an account?{' '}
-          <Link href="/join" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign up for SnapSpaces</Link>
+          <Link href="/join" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign up for Folioo</Link>
         </div>
       </main>
       <style jsx>{`

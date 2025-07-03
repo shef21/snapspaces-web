@@ -39,7 +39,7 @@ export default function JoinPage() {
       <main className="w-full max-w-md bg-white rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0">
         {/* Hero/Intro */}
         <section className="px-8 pt-10 pb-6 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#171717] mb-2">Join SnapSpaces</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#171717] mb-2">Join Folioo</h1>
           <p className="text-lg text-[#171717]/80 mb-6 font-light">Create your account to get started.</p>
         </section>
 
@@ -114,7 +114,7 @@ export default function JoinPage() {
         {/* Sign In Link */}
         <div className="px-8 pb-8 text-center text-sm text-[#171717]/80">
           Already have an account?{' '}
-          <Link href="/signin" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign in to SnapSpaces</Link>
+          <Link href="/signin" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign in to Folioo</Link>
         </div>
         {showVerify && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">

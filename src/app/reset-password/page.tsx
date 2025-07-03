@@ -66,7 +66,7 @@ export default function ResetPasswordPage() {
         </div>
         <div className="px-8 pb-8 text-center text-sm text-[#171717]/80">
           Remembered your password?{' '}
-          <Link href="/signin" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign in to SnapSpaces</Link>
+          <Link href="/signin" className="text-yellow-700 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded">Sign in to Folioo</Link>
         </div>
       </main>
       <style jsx>{`

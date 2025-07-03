@@ -9,7 +9,7 @@ const testimonials = [
     photo: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
-    quote: "SnapSpaces is the future of creative work.",
+    quote: "Folioo is the future of creative work.",
     name: "Sipho K.",
     photo: "https://randomuser.me/api/portraits/men/45.jpg"
   },

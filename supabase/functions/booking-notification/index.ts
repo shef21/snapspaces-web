@@ -22,7 +22,7 @@ serve(async (req) => {
 
     // Send email to creative
     await resend.emails.send({
-      from: 'SnapSpaces <notifications@snapspaces.com>',
+      from: 'Folioo <notifications@folioo.com>',
       to: creative.email,
       subject: 'New Booking Request',
       html: `
@@ -37,14 +37,14 @@ serve(async (req) => {
           <li>Location: ${booking.location}</li>
           <li>Notes: ${booking.notes || 'No additional notes'}</li>
         </ul>
-        <p>Please log in to your SnapSpaces account to accept or decline this booking request.</p>
-        <p>Best regards,<br>The SnapSpaces Team</p>
+        <p>Please log in to your Folioo account to accept or decline this booking request.</p>
+        <p>Best regards,<br>The Folioo Team</p>
       `,
     })
 
     // Send confirmation email to client
     await resend.emails.send({
-      from: 'SnapSpaces <notifications@snapspaces.com>',
+      from: 'Folioo <notifications@folioo.com>',
       to: client.email,
       subject: 'Booking Request Sent',
       html: `
@@ -60,7 +60,7 @@ serve(async (req) => {
           <li>Notes: ${booking.notes || 'No additional notes'}</li>
         </ul>
         <p>We'll notify you once the creative responds to your request.</p>
-        <p>Best regards,<br>The SnapSpaces Team</p>
+        <p>Best regards,<br>The Folioo Team</p>
       `,
     })
 
