@@ -188,7 +188,7 @@ export default function Home() {
 
         {/* Why Folioo / Features */}
         <section className="px-4 sm:px-8 py-8 sm:py-14" style={{ background: '#232326' }}>
-          <h2 className="text-xl sm:text-3xl font-bold text-[#171717] mb-6 sm:mb-8">Why Folioo?</h2>
+          <h2 className="text-xl sm:text-3xl font-bold mb-6 sm:mb-8" style={{ color: '#00b3a4' }}>Why Folioo?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {/* Card 1 */}
             <div className="bg-white rounded-2xl shadow p-4 sm:p-8 flex flex-col items-center text-center">
