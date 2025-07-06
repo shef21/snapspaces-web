@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useUser } from "../../../context/UserContext";
 import { getMessagesForConversation, sendMessage, markMessagesAsRead } from "../../../utils/message";
 import { getProfile } from "../../../utils/profile";
+import { supabase } from "../../../utils/supabase";
 
 export default function ConversationPage() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ export default function ConversationPage() {
   const [messages, setMessages] = useState<any[]>([]);
   const [otherProfile, setOtherProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -21,19 +23,53 @@ export default function ConversationPage() {
   }, [user, router]);
 
   useEffect(() => {
-    let interval: any;
+    console.log('Messages effect triggered', { id, user });
+    if (!id || !user) return;
+    let mounted = true;
+
+    // Fetch initial messages
     async function fetchMessages() {
-      if (!id || !user) return;
-      setLoading(true);
+      if (!hasLoaded) setLoading(true);
       const { data } = await getMessagesForConversation(id as string);
-      setMessages(data || []);
-      setLoading(false);
-      // Mark as read
+      if (mounted) setMessages(data || []);
+      if (!hasLoaded) setLoading(false);
+      setHasLoaded(true);
       await markMessagesAsRead(id as string, user.id);
     }
     fetchMessages();
-    interval = setInterval(fetchMessages, 3000);
-    return () => clearInterval(interval);
+
+    // Subscribe to realtime changes
+    const channel = supabase
+      .channel('messages')
+      .on(
+        'postgres_changes',
+        {
+          event: '*', // Listen for INSERT, UPDATE, DELETE
+          schema: 'public',
+          table: 'messages',
+          filter: `conversation_id=eq.${id}`,
+        },
+        (payload) => {
+          if (!mounted) return;
+          if (payload.eventType === 'INSERT') {
+            setMessages((prev) => {
+              // Avoid duplicate if already present
+              if (prev.some(m => m.id === payload.new.id)) return prev;
+              return [...prev, payload.new];
+            });
+          } else if (payload.eventType === 'UPDATE') {
+            setMessages((prev) => prev.map(m => m.id === payload.new.id ? payload.new : m));
+          } else if (payload.eventType === 'DELETE') {
+            setMessages((prev) => prev.filter(m => m.id !== payload.old.id));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      mounted = false;
+      supabase.removeChannel(channel);
+    };
   }, [id, user]);
 
   useEffect(() => {
@@ -60,11 +96,10 @@ export default function ConversationPage() {
   async function handleSend(e: React.FormEvent) {
     e.preventDefault();
     if (!input.trim() || !user) return;
+    console.log('Sending message:', input);
     await sendMessage(id as string, user.id, input.trim());
     setInput("");
-    // Refetch messages
-    const { data } = await getMessagesForConversation(id as string);
-    setMessages(data || []);
+    // No need to refetch messages; realtime will update the UI
   }
 
   if (user === null || !user) return null;
@@ -78,7 +113,7 @@ export default function ConversationPage() {
           <div className="font-semibold text-[#171717]">{otherProfile?.name || 'User'}</div>
         </div>
         <div className="flex-1 overflow-y-auto bg-[#F6F5F3] rounded-xl p-4 mb-4">
-          {loading ? (
+          {loading && !hasLoaded ? (
             <div className="text-[#171717]/60 text-center py-12">Loading messages...</div>
           ) : messages.length === 0 ? (
             <div className="text-[#171717]/40 text-center py-12">No messages yet.</div>

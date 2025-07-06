@@ -4,8 +4,8 @@ module.exports = {
     extend: {
       colors: {
         aqua: {
-          pop: '#80F8EE',
-          popHover: '#4fd8d3', // slightly darker for hover
+          pop: '#68B2AB',
+          popHover: '#4e8e89', // slightly darker for hover
         },
         charcoal: {
           deep: '#1E1E1E',
