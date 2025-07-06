@@ -4,7 +4,7 @@ import { useUser } from "../../context/UserContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getConversationsForUser } from "../../utils/message";
-import { getProfile } from "../../utils/profile";
+import { supabase } from "../../../utils/supabaseClient";
 
 export default function MessagesPage() {
   const user = useUser();
