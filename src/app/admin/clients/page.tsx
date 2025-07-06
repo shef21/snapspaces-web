@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { getProfileList } from "@/utils/profile";
 import { getAds, getAdAnalytics, updateAd } from "@/utils/ads";
-import { supabase } from "@/utils/supabaseClient";
+import { supabase } from "@/utils/supabase";
 
 export default function AdminClientsPage() {
   const [clients, setClients] = useState<any[]>([]);
