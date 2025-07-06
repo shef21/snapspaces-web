@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { supabase } from './supabase';
 
 export async function createConversation(user1: string, user2: string) {
   // Always store user1 < user2 for uniqueness

@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { supabase } from './supabase';
 
 export async function createReview({ booking_id, reviewer_id, creative_id, rating, text }: { booking_id: string, reviewer_id: string, creative_id: string, rating: number, text: string }) {
   const { data, error } = await supabase

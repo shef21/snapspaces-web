@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getBookingsForUser, updateBookingStatus } from '../../utils/booking';
 import { getProfile } from '../../utils/profile';
 import { createReview } from '../../utils/review';
-import { supabase } from '../../utils/supabaseClient';
+import { supabase } from '../../utils/supabase';
 
 export default function BookingsPage() {
   const user = useUser();

@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { supabase } from './supabase';
 
 export async function sendBookingNotification(booking: any, creative: any, client: any) {
   const { data, error } = await supabase.functions.invoke('booking-notification', {
