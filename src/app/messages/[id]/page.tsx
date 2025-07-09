@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useUser } from "../../../context/UserContext";
 import { getMessagesForConversation, sendMessage, markMessagesAsRead } from "../../../utils/message";
 import { getProfile } from "../../../utils/profile";
-import { supabase } from '../../utils/supabase';
+import { supabase } from '@/utils/supabase';
 
 export default function ConversationPage() {
   const { id } = useParams();
