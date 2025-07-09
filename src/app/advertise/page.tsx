@@ -28,10 +28,10 @@ export default function AdvertisePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#2F2F32' }}>
-      <main className="w-full max-w-lg rounded-3xl shadow-2xl p-8 sm:p-12 flex flex-col items-center" style={{ background: '#fff' }}>
-        <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-center" style={{ color: '#00b3a4', fontFamily: 'MonopolyBank, cursive' }}>Advertise on Folioo</h1>
-        <p className="mb-8 text-center text-[#232326]">Submit your details and our team will get in touch to help you promote your business to thousands of creatives and clients.</p>
+    <div className="min-h-screen font-league-spartan flex flex-col items-center justify-center px-4 py-12" style={{ background: 'var(--color-background-warm)' }}>
+      <main className="w-full max-w-lg rounded-3xl shadow-2xl p-8 sm:p-12 flex flex-col items-center" style={{ background: 'var(--color-text-contrast)' }}>
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-center" style={{ color: 'var(--color-primary-accent)', fontFamily: 'MonopolyBank, cursive' }}>Advertise on SnapSpaces</h1>
+        <p className="mb-8 text-center text-[var(--color-text-contrast)]/80">Submit your details and our team will get in touch to help you promote your business to thousands of creatives and clients.</p>
         {submitted ? (
           <div className="text-center py-12">
             <h2 className="text-2xl font-bold mb-2 text-[#00b3a4]">Thank you!</h2>

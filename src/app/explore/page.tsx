@@ -73,8 +73,8 @@ export default function ExplorePage() {
   });
 
   return (
-    <div className="min-h-screen font-league-spartan flex flex-col items-center" style={{ background: '#2F2F32' }}>
-      <main className="w-full max-w-6xl rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0" style={{ background: '#232326' }}>
+    <div className="min-h-screen font-league-spartan flex flex-col items-center" style={{ background: 'var(--color-background-warm)' }}>
+      <main className="w-full max-w-6xl rounded-3xl shadow-2xl mt-10 mb-10 overflow-hidden px-0" style={{ background: 'var(--color-text-contrast)' }}>
         {/* Featured Creatives */}
         <section className="px-4 sm:px-8 pt-12 pb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#171717] mb-6">Featured Creatives</h2>
