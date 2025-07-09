@@ -4,7 +4,6 @@ import Link from "next/link";
 import "./globals.css";
 import HeaderClient from "../components/HeaderClient";
 import { UserProvider } from '../context/UserContext';
-import Head from 'next/head';
 import React from 'react';
 import { Inter } from 'next/font/google';
 
@@ -30,24 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        <title>SnapSpaces – Book Top Creatives Instantly</title>
-        <meta name="description" content="SnapSpaces is the modern, premium creative marketplace for booking photographers, videographers, and more across South Africa." />
-        <meta property="og:title" content="SnapSpaces – Book Top Creatives Instantly" />
-        <meta property="og:description" content="SnapSpaces is the modern, premium creative marketplace for booking photographers, videographers, and more across South Africa." />
-        <meta property="og:image" content="/og-image.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://snapspaces.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SnapSpaces – Book Top Creatives Instantly" />
-        <meta name="twitter:description" content="SnapSpaces is the modern, premium creative marketplace for booking photographers, videographers, and more across South Africa." />
-        <meta name="twitter:image" content="/og-image.png" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" href="/logo.png" type="image/png" />
-      </Head>
-      <body className={`
+    <html lang="en" className={`${leagueSpartan.variable} ${inter.className}`}>
+      <body>
+        <UserProvider>
+          <HeaderClient />
+          {children}
+        </UserProvider>
+      </body>
+    </html>
+  );
+}
