@@ -44,6 +44,7 @@ export default function RootLayout({
         <meta name="twitter:description" content="SnapSpaces is the modern, premium creative marketplace for booking photographers, videographers, and more across South Africa." />
         <meta name="twitter:image" content="/og-image.png" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <body className={`${leagueSpartan.variable} font-sans ${inter.className}`}>
