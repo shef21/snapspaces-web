@@ -4,6 +4,7 @@ import { useUser } from "../../context/UserContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getConversationsForUser } from "../../utils/message";
+import { getProfile } from "../../utils/profile";
 import { supabase } from '../../utils/supabase';
 
 export default function MessagesPage() {
@@ -22,16 +23,20 @@ export default function MessagesPage() {
     async function fetchConvos() {
       if (!user) return;
       setLoading(true);
-      const { data } = await getConversationsForUser(user.id);
-      setConversations(data || []);
-      // Fetch profiles for the other user in each conversation
-      const ids = Array.from(new Set((data || []).map((c: any) => c.user1 === user.id ? c.user2 : c.user1)));
-      const profilesObj: { [id: string]: any } = {};
-      await Promise.all(ids.map(async id => {
-        const { data: p } = await getProfile(id);
-        if (p) profilesObj[id] = p;
-      }));
-      setProfiles(profilesObj);
+      try {
+        const { data } = await getConversationsForUser(user.id);
+        setConversations(data || []);
+        // Fetch profiles for the other user in each conversation
+        const ids = Array.from(new Set((data || []).map((c) => c.user1 === user.id ? c.user2 : c.user1)));
+        const profilesObj = {};
+        await Promise.all(ids.map(async id => {
+          const { data: p } = await getProfile(id);
+          if (p) profilesObj[id] = p;
+        }));
+        setProfiles(profilesObj);
+      } catch (err) {
+        // Optionally set an error state here
+      }
       setLoading(false);
     }
     if (user) fetchConvos();
