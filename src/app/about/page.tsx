@@ -4,7 +4,7 @@ export default function AboutPage() {
       <main className="w-full max-w-4xl rounded-3xl shadow-2xl mt-6 sm:mt-10 mb-4 sm:mb-10 overflow-hidden px-0" style={{ background: '#232326' }}>
         {/* Hero Section */}
         <section className="px-4 sm:px-8 pt-10 sm:pt-12 pb-4 sm:pb-6 text-center">
-          <h1 className="text-2xl sm:text-4xl font-extrabold mb-3 sm:mb-4" style={{ color: 'var(--color-charcoal-deep)' }}>About Folioo</h1>
+          <h1 className="text-2xl sm:text-4xl font-extrabold mb-3 sm:mb-4" style={{ color: 'var(--color-charcoal-deep)' }}>About SnapSpaces</h1>
           <p className="text-base sm:text-xl text-[#171717]/80 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">Empowering South Africa's creative community to connect, collaborate, and thrive.</p>
         </section>
 
@@ -26,8 +26,8 @@ export default function AboutPage() {
         <section className="px-4 sm:px-8 py-6 sm:py-10 flex flex-col md:flex-row items-center gap-6 sm:gap-10">
           <div className="flex-1">
             <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4" style={{ color: 'var(--color-charcoal-deep)' }}>Our Story</h2>
-            <p className="text-[#171717]/80 mb-3 sm:mb-4 text-sm sm:text-base">Folioo was founded by creatives, for creatives. We saw the challenges of finding the right talent and the right opportunities, and set out to build a platform that makes creative collaboration seamless, transparent, and rewarding for everyone.</p>
-            <p className="text-[#171717]/80 text-sm sm:text-base">Today, Folioo is trusted by hundreds of creatives and clients across South Africa, helping them connect, create, and grow together.</p>
+            <p className="text-[#171717]/80 mb-3 sm:mb-4 text-sm sm:text-base">SnapSpaces was founded by creatives, for creatives. We saw the challenges of finding the right talent and the right opportunities, and set out to build a platform that makes creative collaboration seamless, transparent, and rewarding for everyone.</p>
+            <p className="text-[#171717]/80 text-sm sm:text-base">Today, SnapSpaces is trusted by hundreds of creatives and clients across South Africa, helping them connect, create, and grow together.</p>
           </div>
           <div className="flex-1 flex justify-center mt-6 md:mt-0">
             <div className="w-32 h-32 sm:w-48 sm:h-48 bg-[#CBC8C8] rounded-2xl flex items-center justify-center shadow-lg">

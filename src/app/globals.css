@@ -1,22 +1,15 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@400;600;700&family=Space+Grotesk:wght@400;500&display=swap');
 
 :root {
-  --background: #fff;
-  --foreground: #171717;
-  --primary: #171717;
-  --secondary: #fff;
+  --color-primary-accent: #FFD60A;
+  --color-background-warm: #F5F5F5;
+  --color-text-contrast: #1C1C1E;
+  --color-secondary-accent: #007AFF;
+  --color-positive-accent: #34C759;
+  --color-playful-tertiary: #FF6B6B;
   --font-geist-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --color-aqua-pop: #68B2AB;
-  --color-aqua-pop-hover: #4e8e89;
-  --color-charcoal-deep: #1E1E1E;
-  --color-offwhite-soft: #F9F9F9;
-  --color-coral-muted: #FF7A7A;
-  --color-coral-muted-hover: #e05c5c;
-  --color-slate-blue: #5C6BC0;
-  --color-slate-blue-hover: #3b4a8b;
-  --color-lavender-dusty: #B8A3D0;
-  --color-lavender-dusty-overlay: #a18bbf;
 }
 
 @theme inline {
@@ -26,22 +19,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background-warm: #1C1C1E;
+    --color-text-contrast: #F5F5F5;
   }
 }
 
-body {
-  background: var(--color-offwhite-soft);
-  color: var(--color-charcoal-deep);
-  font-family: var(--font-geist-sans);
-}
-
 body.dark {
-  background: var(--color-charcoal-deep);
-  color: var(--color-offwhite-soft);
+  background: var(--color-text-contrast);
+  color: var(--color-background-warm);
 }
 
 body.dark .card-hover, body.dark .bg-white, body.dark .rounded-3xl, body.dark .rounded-2xl {
@@ -55,6 +43,13 @@ body.dark footer, body.dark .footer {
 
 body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
   color: var(--color-offwhite-soft);
+}
+*/
+
+body {
+  background: var(--color-background-warm);
+  color: var(--color-text-contrast);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Font configuration */
@@ -159,6 +154,17 @@ body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark 
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'DreamLife';
+  src: url('/fonts/DreamLife.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-dreamlife {
+  font-family: 'DreamLife', cursive, sans-serif;
+}
+
 .card-hover, .bg-white, .rounded-3xl, .rounded-2xl {
   background: #F3F4F6 !important;
 }
@@ -169,5 +175,5 @@ footer, .footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-charcoal-deep);
+  color: var(--color-text-contrast);
 }
